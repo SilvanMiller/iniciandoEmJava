@@ -23,11 +23,11 @@ public class PrimeiraClasseJava {
         System.out.println("oi");      
         
         /*invocando o metodo, pois só o Main e auto executavel */
-        globalVar();
+        /*globalVar();
         doubledecimal ();
         concatenar ();
-        obtendoDados ();
-        operadoresLogCondRela ();
+        obtendoDados ();*/
+        operadoresLogicos ();
 
 	}
 	
@@ -102,7 +102,7 @@ public class PrimeiraClasseJava {
 	    System.out.println("Então essa e a sua altura " + altura);
 	}
 	
-	public static void operadoresLogCondRela () {
+public static void operadoresLogicos () {
 		
 		int mediaAluno = 70;
 		String nome = "iller";
@@ -115,11 +115,21 @@ public class PrimeiraClasseJava {
 			System.out.println("Opá não encontramos o Aluno");
 		}
 		
-		double nt1 = 90;
-		double nt2 = 70;
-		double nt3 = 50;
-		double nt4 = 88;
+		double nt1 = 50;
+		double nt2 = 40;
+		double nt3 = 30;
+		double nt4 = 78;
 		
 		double mediaFinal = (nt1 + nt2 + nt3 + nt4 )/4;
+		
+		if(mediaFinal >= 70) {
+			System.out.println("Aluno aprovado " + mediaFinal);
+			}
+		if(mediaFinal >= 50 && mediaFinal <= 69) {
+			System.out.println("Aluno em recuperação " + mediaFinal);
+			}
+		else {
+			System.out.println("Aluno reprovado " + mediaFinal);
+		}
 	}
 }

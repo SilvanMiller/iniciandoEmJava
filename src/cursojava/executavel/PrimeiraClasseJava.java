@@ -23,11 +23,7 @@ public class PrimeiraClasseJava {
         System.out.println("oi");      
         
         /*invocando o metodo, pois só o Main e auto executavel */
-        globalVar();
-        doubledecimal ();
-        concatenar ();
-        obtendoDados ();
-        operadoresLogicos ();
+        globalVar(); doubledecimal (); concatenar (); obtendoDados (); operadoresLogicos ();
 
 	}
 	
@@ -115,9 +111,9 @@ public class PrimeiraClasseJava {
 			System.out.println("Opá não encontramos o Aluno");
 		}
 		
-		double nt1 = 50;
+		double nt1 = 90;
 		double nt2 = 60;
-		double nt3 = 50;
+		double nt3 = 80;
 		double nt4 = 88;
 		
 		double mediaFinal = (nt1 + nt2 + nt3 + nt4 )/4;
@@ -140,5 +136,39 @@ public class PrimeiraClasseJava {
 		String saidaResultado = mediaFinal >= 70 ? "Aluno Aprovado" : (mediaFinal >= 50 && mediaFinal <= 69) ? "Aluno em recuperação " : "Aluno Reprovado";
 		
 		System.out.println(mediaFinal + " - " + saidaResultado);
+		
+		/*OPERADORES LÓG ANINHADOS são operações dentro de operações */
+		
+		if(mediaFinal >= 50) {
+			
+			if(mediaFinal >= 70) {
+				
+				if(mediaFinal > 90) {
+					
+					System.out.println("Aluno Aprovado direto - Parabéns !!! " + mediaFinal);
+					
+				}else {System.out.println("Aluno Aprovado " + mediaFinal);}
+			
+			}else {System.out.println("Aluno de Recuperação " + mediaFinal);}
+			
+		}else {System.out.println("Aluno Reprovado Direto " + mediaFinal);}
+		
+		/* SWITCH CASE usado em operações exatas*/
+		
+		int dia = 3; //2, 3
+		
+		switch (dia) {
+		case 1:
+			System.out.println("Domingo");
+			break;
+		case 2:
+			System.out.println("Segunda-Feira");
+			break;
+		case 3:
+			System.out.println("terça-feira");
+			break;
+		default: System.out.println("Um outro dia qualquer");
+			break;
+		}
 	}
 }

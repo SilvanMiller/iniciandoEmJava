@@ -1,5 +1,7 @@
 package cursojava.executavel;
-import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+import java.util.Scanner; 
 
 
 
@@ -22,8 +24,9 @@ public class PrimeiraClasseJava {
         System.out.print("oi");
         System.out.println("oi");      
         
-        /*invocando o metodo, pois só o Main e auto executavel */
-        globalVar(); doubledecimal (); concatenar (); obtendoDados (); operadoresLogicos ();
+        /*invocando o metodo, pois só o Main e auto executavel*/ 
+        globalVar(); doubledecimal (); concatenar (); operadoresLogicos (); 
+        repeticaoWhile (); repeticaoFor (); obtendoDados (); caculoMedia ();
 
 	}
 	
@@ -69,33 +72,6 @@ public class PrimeiraClasseJava {
 				" anos, meu contato é esse: " + telefone + " e moro na " + endereço;
 		
 		System.out.println(saida);
-	}
-	
-	public static void obtendoDados () {
-	
-		/*leitura de valores*/
-	
-	  /*inicaliza o scanner e ler uma idade. */
-	    Scanner leitor = new Scanner(System.in);
-	    
-	    System.out.println("Quantos anos você tem ?");
-	    int idade = leitor.nextInt();
-	    leitor.nextLine(); /*usado para quando vc acaba de ler algo e passar para a proxima linha ou leitura.*/
-	
-	  /* Ler sexo */
-	    System.out.println("Me diga o seu sexo?");
-	    String sexo = leitor.nextLine(); 
-	
-	  /* ler altura */
-	    System.out.println("E agora qual a sua altura?");
-	    double altura = leitor.nextDouble();
-		leitor.nextLine();
-	    
-	    
-	    System.out.println("A idade global e " + mediaIdadeGB);
-	    System.out.println("A sua idade e " + idade);
-	    System.out.println("Você e do sexo " + sexo);
-	    System.out.println("Então essa e a sua altura " + altura);
 	}
 	
 	public static void operadoresLogicos () {
@@ -171,4 +147,132 @@ public class PrimeiraClasseJava {
 			break;
 		}
 	}
+	
+	public static void repeticaoWhile () {
+		
+		int numero = 0;
+		int numero2 = 10;
+		while(numero <= 10) {
+			numero++;
+			System.out.println("O numero atual while é: " + numero);
+		}
+		/*--- DO ---------*/
+		
+		do {
+			System.out.println("O numero decresente DO While é: " + numero2);
+			numero2--;
+		}while (numero2 >= 0);
+			
+	}
+	
+	public static void repeticaoFor () {
+		for (int n = 0; n <= 10; n++) {
+			System.out.println("O numero atual do FOR é: " + n);
+		}
+		
+		for (int n = 10; n >= 0; n--) {
+			System.out.println("O numero decresente do FOR é: " + n);
+		}
+		
+		for (int n = 0; n <= 10; n++) {
+			if (n == 3) {
+				System.out.println("Opa, tem um número 3 aqui");
+				System.out.println("parei, não achei mais");
+				continue;
+			}
+		}
+		
+		for (int n = 0; n <= 10; n++) {
+			if (n == 3 || n == 6 || n == 9) {
+				System.out.println("Opa, tem um número "+ n);
+				continue;
+			}
+		}
+	}
+
+	public static void obtendoDados () {
+		
+		String carros = JOptionPane.showInputDialog("Informe a quantidade de carros");
+		String pessoa = JOptionPane.showInputDialog("Informe a quantidade de pessoas");
+		
+		double nCarros = Double.parseDouble(carros);
+		double nPessoa = Double.parseDouble(pessoa);
+		
+		int divisao = (int)(nCarros / nPessoa);
+		double resto = nCarros % nPessoa;
+		
+		int resposta = JOptionPane.showConfirmDialog(null, "Deseja ver o resultado da divisão?");
+			if (resposta == 0) {
+				JOptionPane.showMessageDialog(null,"Teremos " + divisao + " carro(s) para cada pessoa");
+			}else {
+				JOptionPane.showMessageDialog(null, "Obrigado e até mais.");
+			};
+		
+			
+		resposta = JOptionPane.showConfirmDialog(null, "Deseja saber o resto da divisão?");
+			if (resposta == 0) {		
+				JOptionPane.showMessageDialog(null,"Sobrou " + resto + " carro(s)");
+			}else {
+				JOptionPane.showMessageDialog(null, "Obrigado e até mais.");
+			};
+			
+			
+		
+		/*leitura de valores 
+		
+		  //inicaliza o scanner e ler uma idade. 
+		    Scanner leitor = new Scanner(System.in);
+		    
+		    System.out.println("Quantos anos você tem ?");
+		    int idade = leitor.nextInt();
+		    leitor.nextLine(); //usado para quando vc acaba de ler algo e passar para a proxima linha ou leitura.
+		
+		  //Ler sexo 
+		    System.out.println("Me diga o seu sexo?");
+		    String sexo = leitor.nextLine(); 
+		
+		   //ler altura 
+		    System.out.println("E agora qual a sua altura?");
+		    double altura = leitor.nextDouble();
+			leitor.nextLine();
+		    
+		    System.out.println("A idade global e " + mediaIdadeGB);
+		    System.out.println("A sua idade e " + idade);
+		    System.out.println("Você e do sexo " + sexo);
+		    System.out.println("Então essa e a sua altura " + altura); */
+	}
+
+	public static void caculoMedia () {
+		
+		String nomeAluno = JOptionPane.showInputDialog("Digite o Nome do Aluno?");
+		
+		String nota1 = JOptionPane.showInputDialog("Digite a primeira nota do " + nomeAluno);
+		String nota2 = JOptionPane.showInputDialog("Digite a segunda nota do " + nomeAluno);
+		String nota3 = JOptionPane.showInputDialog("Digite a terceira nota do " + nomeAluno);
+		String nota4 = JOptionPane.showInputDialog("Digite a quarta nota do " + nomeAluno);
+		
+		//conversão das strings em numero 
+		double av1 = Double.parseDouble(nota1);
+		double av2 = Double.parseDouble(nota2);
+		double av3 = Double.parseDouble(nota3);
+		double av4 = Double.parseDouble(nota4);
+		
+		double media = (av1 + av2 + av3 + av4) / 4;
+		
+		//JOptionPane.showMessageDialog(null,"A media do Aluno " + nomeAluno + " é: " + media);
+		
+		//Média para aprovação é 70
+		if (media >= 50) {
+			if(media >= 70) {
+				JOptionPane.showMessageDialog(null, nomeAluno + " está aprovado com média de " + media);
+			}else {
+				JOptionPane.showMessageDialog(null, nomeAluno + " está de recuperação sua média foi " + media);
+			}
+		}else {
+			JOptionPane.showMessageDialog(null, 
+					nomeAluno + " foi reprovado direto sua média (" + media + "), foi abaixo de 50");
+		}		
+	}
+
+	//
 }

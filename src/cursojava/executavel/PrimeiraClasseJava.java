@@ -2,6 +2,7 @@ package cursojava.executavel;
 
 import javax.swing.JOptionPane;
 import java.util.Scanner; 
+import cursojava.classes.Aluno;
 
 
 
@@ -24,9 +25,10 @@ public class PrimeiraClasseJava {
         System.out.print("oi");
         System.out.println("oi");      
         
-        /*invocando o metodo, pois só o Main e auto executavel*/ 
+        /*invocando o metodo, pois só o Main e auto executavel 
         globalVar(); doubledecimal (); concatenar (); operadoresLogicos (); 
-        repeticaoWhile (); repeticaoFor (); obtendoDados (); caculoMedia ();
+        repeticaoWhile (); repeticaoFor (); obtendoDados (); caculoMedia ();*/
+        pooConstrutor (); getsetMetodo ();
 
 	}
 	
@@ -157,7 +159,6 @@ public class PrimeiraClasseJava {
 			System.out.println("O numero atual while é: " + numero);
 		}
 		/*--- DO ---------*/
-		
 		do {
 			System.out.println("O numero decresente DO While é: " + numero2);
 			numero2--;
@@ -273,6 +274,50 @@ public class PrimeiraClasseJava {
 					nomeAluno + " foi reprovado direto sua média (" + media + "), foi abaixo de 50");
 		}		
 	}
-
+	
+	public static void pooConstrutor () {
+		
+		/*new Aluno() é uma INSTANCIA (criação de objeto)*/
+		/* aluno1 é uma referencia para o objeto Aluno*/
+		/*Aluno aluno1 = new Aluno();
+		aluno1.nome = "Miguel";
+		aluno1.idade = 21;
+		System.out.println("Aluno1 se chama "+ aluno1.nome + " e sua idade é " + aluno1.idade);
+		
+		Aluno aluno2 = new Aluno("Deborah");
+		
+		Aluno aluno3 = new Aluno("Silvan",43);*/
+		
+	}
+	
+	public static void getsetMetodo () {
+		Aluno aluno1 = new Aluno();
+		
+		aluno1.setNome("Micaela");
+		aluno1.setIdade(14);
+		aluno1.setNomeEscola("Escola estadual Casimiro de Abreu");
+		aluno1.setNomeMae("Michele");
+		aluno1.setNomePai("Silvan");
+		
+		System.out.println("Aluno1 se chama "+ aluno1.getNome()+ " tenho "+ aluno1.getIdade()+ " e estudo na escola "+ aluno1.getNomeEscola());
+		
+		Aluno aluno2 = new Aluno("Deborah");
+		
+		aluno2.setNome("Miguel");
+		aluno2.setIdade(21);
+		aluno2.setNomeEscola("Escola estadual Casimiro de Abreu");
+		aluno2.setNomeMae("Michele");
+		aluno2.setNomePai("Silvan");
+		
+		System.out.println("Aluno1 se chama "+ aluno2.getNome()+ " tenho "+ aluno2.getIdade()+ " e estudo na escola "+ aluno2.getNomeEscola() + "o nome de seu pai é "+ aluno2.getNomePai());
+		
+		
+		Aluno aluno3 = new Aluno("Silvan",43);
+	}
 	//
+	
+	
+	
+	
+	
 }

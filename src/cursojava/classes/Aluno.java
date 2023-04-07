@@ -6,7 +6,7 @@ public class Aluno {
 	/*Esses são os atributos das caracteristicas da classe Aluno*/
 	private String nome;
 	private int idade;
-	private String dataNacimento;
+	private String dataNascimento;
 	private String registroGeral;
 	private String numeroCPF;
 	private String nomeMae;
@@ -15,18 +15,23 @@ public class Aluno {
 	private String nomeEscola;
 	private String serieMatricualado;
 	
+	private double nota1;
+	private double nota2;
+	private double nota3;
+	private double nota4;
+	
 	public Aluno() {/*Cria os dados na memoria - sendo padrão do Java*/
 		
 	}
 	
-	public Aluno(String nomePadrao) {
+	/*public Aluno(String nomePadrao) {
 		nome = nomePadrao;
 	}
 	
 	public Aluno(String nomePadrao, int idadePadrao) {
 		nome = nomePadrao;
 		idade = idadePadrao;
-	}
+	}/*
 	
 	/*agora os metodos SETTERS E GETTERS do objeto*/
 	/*para gerar o get e set de todos atributros, basta em um espaço vazio clicar com direito e ir em source e depois gerar get set e marcar quais vc quer gerar*/
@@ -50,12 +55,12 @@ public class Aluno {
 		this.idade = idade;
 	}
 
-	public String getDataNacimento() {
-		return dataNacimento;
+	public String getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setDataNacimento(String dataNacimento) {
-		this.dataNacimento = dataNacimento;
+	public void setDataNascimento(String dataNacimento) {
+		this.dataNascimento = dataNacimento;
 	}
 
 	public String getRegistroGeral() {
@@ -113,5 +118,61 @@ public class Aluno {
 	public void setSerieMatricualado(String serieMatricualado) {
 		this.serieMatricualado = serieMatricualado;
 	}
+
+	public double getNota1() {
+		return nota1;
+	}
+
+	public void setNota1(double nota1) {
+		this.nota1 = nota1;
+	}
+
+	public double getNota2() {
+		return nota2;
+	}
+
+	public void setNota2(double nota2) {
+		this.nota2 = nota2;
+	}
+
+	public double getNota3() {
+		return nota3;
+	}
+
+	public void setNota3(double nota3) {
+		this.nota3 = nota3;
+	}
+
+	public double getNota4() {
+		return nota4;
+	}
+
+	public void setNota4(double nota4) {
+		this.nota4 = nota4;
+	}
+	
+	/*MÉTODO Q RETORNA A MEDIA DO ALUNO*/
+	public double getMediaNT() { 
+		return (nota1 + nota2 + nota3 + nota4)/4;
+	}
+	
+	public boolean getAlunoApRep() {
+		double media = this.getMediaNT();
+		if(media >= 70) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	/* MÉTODO RARAMENTE UTILIZADO */
+	/*public String getAlunoApRepString() {
+		double media = this.getMediaNT();
+		if(media >= 70) {
+			return "Você foi Aprovado";
+		}else {
+			return "Você foi reprovado";
+		}
+	}*/
 	
 }

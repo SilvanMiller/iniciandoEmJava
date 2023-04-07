@@ -1,6 +1,9 @@
 package cursojava.executavel;
 
 import javax.swing.JOptionPane;
+
+import com.sun.jdi.IntegerType;
+
 import java.util.Scanner; 
 import cursojava.classes.Aluno;
 
@@ -27,8 +30,8 @@ public class PrimeiraClasseJava {
         
         /*invocando o metodo, pois só o Main e auto executavel 
         globalVar(); doubledecimal (); concatenar (); operadoresLogicos (); 
-        repeticaoWhile (); repeticaoFor (); obtendoDados (); caculoMedia ();*/
-        pooConstrutor (); getsetMetodo ();
+        repeticaoWhile (); repeticaoFor (); obtendoDados (); caculoMedia ();
+        pooConstrutor (); getsetMetodo ();*/ entradaDadosTeclado();
 
 	}
 	
@@ -71,7 +74,7 @@ public class PrimeiraClasseJava {
 		String endereço = "Est. dos Bandeirantes - RJ";
 		
 		String saida = "Eu sou " + nome + " tenho " + idade +   
-				" anos, meu contato é esse: " + telefone + " e moro na " + endereço;
+				" anos, portando o CPF de nº " + cpf + " meu contato é esse: " + telefone + " e moro na " + endereço;
 		
 		System.out.println(saida);
 	}
@@ -299,22 +302,67 @@ public class PrimeiraClasseJava {
 		aluno1.setNomeMae("Michele");
 		aluno1.setNomePai("Silvan");
 		
-		System.out.println("Aluno1 se chama "+ aluno1.getNome()+ " tenho "+ aluno1.getIdade()+ " e estudo na escola "+ aluno1.getNomeEscola());
+		aluno1.setNota1(90);
+		aluno1.setNota2(80.7);
+		aluno1.setNota3(70.9);
+		aluno1.setNota4(90.7);
 		
-		Aluno aluno2 = new Aluno("Deborah");
+		System.out.println(aluno1.getNomeEscola() + ",");
+		System.out.println("Aluno(a) "+ aluno1.getNome());
+		System.out.println("tem "+ aluno1.getIdade() + " anos. ");
+		System.out.println("Sua media é = " + aluno1.getMediaNT());
 		
-		aluno2.setNome("Miguel");
-		aluno2.setIdade(21);
-		aluno2.setNomeEscola("Escola estadual Casimiro de Abreu");
-		aluno2.setNomeMae("Michele");
-		aluno2.setNomePai("Silvan");
+		System.out.println("Resuldado = "+ (aluno1.getAlunoApRep() ? "Você foi Aprovado" : "Você foi Reprovado"));
 		
-		System.out.println("Aluno1 se chama "+ aluno2.getNome()+ " tenho "+ aluno2.getIdade()+ " e estudo na escola "+ aluno2.getNomeEscola() + "o nome de seu pai é "+ aluno2.getNomePai());
+	}
+	
+	public static void entradaDadosTeclado() {
+		
+		String nome = JOptionPane.showInputDialog("Digite o nome do Aluno ?");
+		String idade = JOptionPane.showInputDialog("Digite sua idade ?");
+		String nascimento = JOptionPane.showInputDialog("Digite a data de nascimento");
+		String rg = JOptionPane.showInputDialog("Digite seu registro geral(rg)");
+		String mae = JOptionPane.showInputDialog("Digite o nome da mãe");
+		String pai = JOptionPane.showInputDialog("Digite nome do pai");
+		String dtMatricula = JOptionPane.showInputDialog("Digite data da matricula");
+		String serieMatriculada = JOptionPane.showInputDialog("Digite serie matriculada ?");
+		String nomeEscola = JOptionPane.showInputDialog("Digite o nome da escola ?");
+		
+		String nt1 = JOptionPane.showInputDialog("Digite a primeira nota");
+		String nt2 = JOptionPane.showInputDialog("Digite a segunda nota");
+		String nt3 = JOptionPane.showInputDialog("Digite a terceira nota");
+		String nt4 = JOptionPane.showInputDialog("Digite a quarta nota");
+		
+		Aluno aluno1 = new Aluno();
+		
+		aluno1.setNome(nome);
+		aluno1.setIdade(Integer.parseInt(idade));
+		aluno1.setDataNascimento(nascimento);
+		aluno1.setRegistroGeral(rg);
+		aluno1.setNomeMae(mae);
+		aluno1.setNomePai(pai);
+		aluno1.setDataMatricula(dtMatricula);
+		aluno1.setSerieMatricualado(serieMatriculada);		
+		aluno1.setNomeEscola(nomeEscola);
 		
 		
-		Aluno aluno3 = new Aluno("Silvan",43);
+		aluno1.setNota1(Double.parseDouble(nt1));
+		aluno1.setNota2(Double.parseDouble(nt2));
+		aluno1.setNota3(Double.parseDouble(nt3));
+		aluno1.setNota4(Double.parseDouble(nt4));
+		
+		System.out.println(aluno1.getNomeEscola() + ",");
+		System.out.println("Aluno(a) "+ aluno1.getNome());
+		System.out.println("tem "+ aluno1.getIdade() + " anos. ");
+		System.out.println("Sua media é = " + aluno1.getMediaNT());
+		System.out.println("Resuldado = "+ (aluno1.getAlunoApRep() ? "Você foi Aprovado" : "Você foi Reprovado"));
+		
 	}
 	//
+
+	private static int parseInt(String idade) {
+		return 0;
+	}
 	
 	
 	

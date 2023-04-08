@@ -29,10 +29,11 @@ public class PrimeiraClasseJava {
         System.out.println("oi");      
         
         /*invocando o metodo, pois só o Main e auto executavel 
+         
         globalVar(); doubledecimal (); concatenar (); operadoresLogicos (); 
         repeticaoWhile (); repeticaoFor (); obtendoDados (); caculoMedia ();
-        pooConstrutor (); getsetMetodo ();*/ entradaDadosTeclado();
-
+        pooConstrutor (); getsetMetodo (); entradaDadosTeclado(); equalsHashcode();*/
+        acresentarDisciplinas();
 	}
 	
 	public static void globalVar ()  {
@@ -351,18 +352,71 @@ public class PrimeiraClasseJava {
 		aluno1.setNota3(Double.parseDouble(nt3));
 		aluno1.setNota4(Double.parseDouble(nt4));
 		
-		System.out.println(aluno1.getNomeEscola() + ",");
-		System.out.println("Aluno(a) "+ aluno1.getNome());
-		System.out.println("tem "+ aluno1.getIdade() + " anos. ");
+		System.out.println(aluno1.toString());
 		System.out.println("Sua media é = " + aluno1.getMediaNT());
 		System.out.println("Resuldado = "+ (aluno1.getAlunoApRep() ? "Você foi Aprovado" : "Você foi Reprovado"));
 		
 	}
+	
+	public static void equalsHashcode() {
+		/*Eguals e Hashcode (diferencia e compara objetos*/
+		
+		Aluno aluno1 = new Aluno();
+		aluno1.setNome("Miller");
+		aluno1.setNumeroCPF("092");
+		
+		Aluno aluno2 = new Aluno();
+		aluno2.setNome("Miller");
+		aluno1.setNumeroCPF("092.0");
+		
+		if(aluno1.equals(aluno2)) {
+			System.out.println("Alunos são iguais");
+		}else {
+			System.out.println("Alunos não são iguais");
+		}
+	}
+	
+	
+	public static void acresentarDisciplinas() {
+		
+		String nomeEscola = JOptionPane.showInputDialog("Digite o nome da escola ?");
+		String nome = JOptionPane.showInputDialog("Digite o nome do Aluno ?");
+		
+		String materia1 = JOptionPane.showInputDialog("Nome da Materia");
+		String nt1 = JOptionPane.showInputDialog("Digite a primeira nota");
+		
+		String materia2 = JOptionPane.showInputDialog("Nome da Materia");
+		String nt2 = JOptionPane.showInputDialog("Digite a segunda nota");
+		
+		String materia3 = JOptionPane.showInputDialog("Nome da Materia");
+		String nt3 = JOptionPane.showInputDialog("Digite a terceira nota");
+		
+		String materia4 = JOptionPane.showInputDialog("Nome da Materia");
+		String nt4 = JOptionPane.showInputDialog("Digite a quarta nota");
+		
+		Aluno aluno1 = new Aluno();
+		
+		aluno1.setNome(nome);
+		aluno1.setNomeEscola(nomeEscola);
+		
+		aluno1.setDisciplina1(materia1);
+		aluno1.setDisciplina2(materia2);
+		aluno1.setDisciplina3(materia3);
+		aluno1.setDisciplina4(materia4);
+		
+		aluno1.setNota1(Double.parseDouble(nt1));
+		aluno1.setNota2(Double.parseDouble(nt2));
+		aluno1.setNota3(Double.parseDouble(nt3));
+		aluno1.setNota4(Double.parseDouble(nt4));
+		
+		System.out.println(aluno1.toString());
+		System.out.println("Sua media é = " + aluno1.getMediaNT());
+		System.out.println("Resuldado = "+ (aluno1.getAlunoApRep() ? "Você foi Aprovado" : "Você foi Reprovado"));
+	} 
+	
 	//
 
-	private static int parseInt(String idade) {
-		return 0;
-	}
+	
 	
 	
 	

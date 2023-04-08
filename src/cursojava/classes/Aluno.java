@@ -15,9 +15,13 @@ public class Aluno {
 	private String nomeEscola;
 	private String serieMatricualado;
 	
+	private String disciplina1;
 	private double nota1;
+	private String disciplina2;
 	private double nota2;
+	private String disciplina3;
 	private double nota3;
+	private String disciplina4;
 	private double nota4;
 	
 	public Aluno() {/*Cria os dados na memoria - sendo padrão do Java*/
@@ -35,8 +39,6 @@ public class Aluno {
 	
 	/*agora os metodos SETTERS E GETTERS do objeto*/
 	/*para gerar o get e set de todos atributros, basta em um espaço vazio clicar com direito e ir em source e depois gerar get set e marcar quais vc quer gerar*/
-	
-	
 	/*SET é para adicionar/receber dados aos atributos*/
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -151,6 +153,38 @@ public class Aluno {
 		this.nota4 = nota4;
 	}
 	
+	public String getDisciplina1() {
+		return disciplina1;
+	}
+
+	public void setDisciplina1(String disciplina1) {
+		this.disciplina1 = disciplina1;
+	}
+
+	public String getDisciplina2() {
+		return disciplina2;
+	}
+
+	public void setDisciplina2(String disciplina2) {
+		this.disciplina2 = disciplina2;
+	}
+
+	public String getDisciplina3() {
+		return disciplina3;
+	}
+
+	public void setDisciplina3(String disciplina3) {
+		this.disciplina3 = disciplina3;
+	}
+
+	public String getDisciplina4() {
+		return disciplina4;
+	}
+
+	public void setDisciplina4(String disciplina4) {
+		this.disciplina4 = disciplina4;
+	}
+
 	/*MÉTODO Q RETORNA A MEDIA DO ALUNO*/
 	public double getMediaNT() { 
 		return (nota1 + nota2 + nota3 + nota4)/4;
@@ -174,5 +208,63 @@ public class Aluno {
 			return "Você foi reprovado";
 		}
 	}*/
+	
+	private static int parseInt(String idade) {
+		return 0;
+	}
+
+	/*public String toString() {
+		return "Aluno [" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento + ", registroGeral="
+				+ registroGeral + ", numeroCPF=" + numeroCPF + ", nomeMae=" + nomeMae + ", nomePai=" + nomePai
+				+ ", dataMatricula=" + dataMatricula + ", nomeEscola=" + nomeEscola + ", serieMatricualado="
+				+ serieMatricualado + ", nota1=" + nota1 + ", nota2=" + nota2 + ", nota3=" + nota3 + ", nota4=" + nota4
+				+ "]";
+	}*/
+
+	
+	
+	/*Eguals e Hashcode (diferencia e compara objetos*/
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((numeroCPF == null) ? 0 : numeroCPF.hashCode());
+		return result;
+	}
+
+	public String toString() {
+		return "Aluno [" + nome + ", "
+				+ "nomeEscola=" + nomeEscola + ", "
+				+ "disciplina1=" + disciplina1 + ", nota1="	+ nota1 + ", "
+				+ "disciplina2=" + disciplina2 + ", nota2=" + nota2 + ", "
+				+ "disciplina3=" + disciplina3 + ", nota3=" + nota3 + ", "
+				+ "disciplina4=" + disciplina4 + ", nota4=" + nota4 + "]";
+	}
+
+	/*Eguals e Hashcode (diferencia e compara objetos*/
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluno other = (Aluno) obj;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (numeroCPF == null) {
+			if (other.numeroCPF != null)
+				return false;
+		} else if (!numeroCPF.equals(other.numeroCPF))
+			return false;
+		return true;
+	}
+
+	
+	
+	
 	
 }

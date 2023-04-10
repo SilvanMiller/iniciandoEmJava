@@ -1,10 +1,11 @@
 package cursojava.executavel;
 
 import javax.swing.JOptionPane;
-
 import com.sun.jdi.IntegerType;
-
 import java.util.Scanner; 
+import java.util.ArrayList;
+import java.util.List;
+
 import cursojava.classes.Aluno;
 
 
@@ -303,10 +304,10 @@ public class PrimeiraClasseJava {
 		aluno1.setNomeMae("Michele");
 		aluno1.setNomePai("Silvan");
 		
-		aluno1.setNota1(90);
-		aluno1.setNota2(80.7);
-		aluno1.setNota3(70.9);
-		aluno1.setNota4(90.7);
+		aluno1.getDisciplina().setNota1(90);
+		aluno1.getDisciplina().setNota2(80.7);
+		aluno1.getDisciplina().setNota3(70.9);
+		aluno1.getDisciplina().setNota4(90.7);
 		
 		System.out.println(aluno1.getNomeEscola() + ",");
 		System.out.println("Aluno(a) "+ aluno1.getNome());
@@ -347,10 +348,10 @@ public class PrimeiraClasseJava {
 		aluno1.setNomeEscola(nomeEscola);
 		
 		
-		aluno1.setNota1(Double.parseDouble(nt1));
-		aluno1.setNota2(Double.parseDouble(nt2));
-		aluno1.setNota3(Double.parseDouble(nt3));
-		aluno1.setNota4(Double.parseDouble(nt4));
+		aluno1.getDisciplina().setNota1(Double.parseDouble(nt1));
+		aluno1.getDisciplina().setNota2(Double.parseDouble(nt2));
+		aluno1.getDisciplina().setNota3(Double.parseDouble(nt3));
+		aluno1.getDisciplina().setNota4(Double.parseDouble(nt4));
 		
 		System.out.println(aluno1.toString());
 		System.out.println("Sua media é = " + aluno1.getMediaNT());
@@ -376,7 +377,6 @@ public class PrimeiraClasseJava {
 		}
 	}
 	
-	
 	public static void acresentarDisciplinas() {
 		
 		String nomeEscola = JOptionPane.showInputDialog("Digite o nome da escola ?");
@@ -399,15 +399,15 @@ public class PrimeiraClasseJava {
 		aluno1.setNome(nome);
 		aluno1.setNomeEscola(nomeEscola);
 		
-		aluno1.setDisciplina1(materia1);
-		aluno1.setDisciplina2(materia2);
-		aluno1.setDisciplina3(materia3);
-		aluno1.setDisciplina4(materia4);
+		aluno1.getDisciplina().setNota1(Double.parseDouble(nt1));
+		aluno1.getDisciplina().setNota2(Double.parseDouble(nt2));
+		aluno1.getDisciplina().setNota3(Double.parseDouble(nt3));
+		aluno1.getDisciplina().setNota4(Double.parseDouble(nt4));
 		
-		aluno1.setNota1(Double.parseDouble(nt1));
-		aluno1.setNota2(Double.parseDouble(nt2));
-		aluno1.setNota3(Double.parseDouble(nt3));
-		aluno1.setNota4(Double.parseDouble(nt4));
+		aluno1.getDisciplina().setDisciplina1(materia1);
+		aluno1.getDisciplina().setDisciplina2(materia2);
+		aluno1.getDisciplina().setDisciplina3(materia3);
+		aluno1.getDisciplina().setDisciplina4(materia4);
 		
 		System.out.println(aluno1.toString());
 		System.out.println("Sua media é = " + aluno1.getMediaNT());

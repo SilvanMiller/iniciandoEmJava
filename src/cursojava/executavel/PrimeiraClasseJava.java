@@ -578,10 +578,15 @@ public class PrimeiraClasseJava {
     		alunos.add(aluno1);	
         };
         for (Aluno aluno : alunos) {
-        	System.out.println(aluno.toString());
-        	System.out.println("Sua media é = " + aluno.getMediaNT());
-        	System.out.println("Resuldado = "+ aluno.getAlunoApRepString());
-        	System.out.println("--------------------------------------------------------------------------------------");
+        	
+        	/*se o nome for localizado na lista ai sim imprime somente os ddos dele, assim percorre toda lista */
+        	if(aluno.getNome().equalsIgnoreCase("Miguel")) {
+	        	System.out.println(aluno.toString());
+	        	System.out.println("Sua media é = " + aluno.getMediaNT());
+	        	System.out.println("Resuldado = "+ aluno.getAlunoApRepString());
+	        	System.out.println("--------------------------------------------------------------------------");
+	        	break;
+        	}
 		}
 	}
 	//

@@ -1,5 +1,8 @@
 package cursojava.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*Esta é a classe /objeto que representa o Aluno*/
 public class Aluno {
 	
@@ -15,28 +18,27 @@ public class Aluno {
 	private String nomeEscola;
 	private String serieMatricualado;
 	
-	private Disciplina disciplina = new Disciplina();
+	private List<Disciplina> disciplinas = new ArrayList<Disciplina>();
 	
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
-	
-	public Disciplina getDisciplina() {
-		return disciplina;
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
 	}
 	
 	public Aluno() {/*Cria os dados na memoria - sendo padrão do Java*/
 		
 	}
 	
-	/*public Aluno(String nomePadrao) {
+	public Aluno(String nomePadrao) {
 		nome = nomePadrao;
 	}
 	
 	public Aluno(String nomePadrao, int idadePadrao) {
 		nome = nomePadrao;
 		idade = idadePadrao;
-	}/*
+	}
 	
 	/*para gerar o get e set de todos atributros, basta em um espaço vazio clicar com direito e ir em source e depois gerar get set e marcar quais vc quer gerar*/
 	
@@ -124,14 +126,23 @@ public class Aluno {
 	}
 
 	/*MÉTODO Q RETORNA A MEDIA DO ALUNO*/
-	public double getMediaNT() { 
+	
+	/*public double getMediaNT() { 
 		return (disciplina.getNota1() + disciplina.getNota2() 
-					+ disciplina.getNota3() + disciplina.getNota4()) / 4;
+					+ disciplina.getNota3() + disciplina.getNota4()) / 4;}*/
+	
+	public double getMediaNT() {
+		
+		double somaNotas = 0.0;
+		for(Disciplina disciplina : disciplinas) {
+			somaNotas += disciplina.getNota();
+		}
+		return somaNotas / disciplinas.size();
 	}
 	
 	public boolean getAlunoApRep() {
 		double media = this.getMediaNT();
-		if(media >= 70) {
+		if(media >= 50) {
 			return true;
 		}else {
 			return false;
@@ -139,14 +150,18 @@ public class Aluno {
 	}
 	
 	/* MÉTODO RARAMENTE UTILIZADO */
-	/*public String getAlunoApRepString() {
+	public String getAlunoApRepString() {
 		double media = this.getMediaNT();
-		if(media >= 70) {
-			return "Você foi Aprovado";
+		if(media >= 50) {
+			if(media >= 70) {
+				return "Você foi Aprovado";	
+			}else {
+				return "Você esta de Recuperação";
+			}
 		}else {
 			return "Você foi reprovado";
 		}
-	}*/
+	}
 	
 	private static int parseInt(String idade) {
 		return 0;
@@ -163,8 +178,7 @@ public class Aluno {
 					+ "nomePai=" + nomePai + ", "
 					+ "dataMatricula=" + dataMatricula + ", "
 					+ "nomeEscola=" + nomeEscola + ", "
-					+ "serieMatricualado=" + serieMatricualado + ", "
-					+ "disciplina=" + disciplina + "]";
+					+ "serieMatricualado=" + serieMatricualado + ",]";
 }
 
 	/*Eguals e Hashcode (diferencia e compara objetos*/

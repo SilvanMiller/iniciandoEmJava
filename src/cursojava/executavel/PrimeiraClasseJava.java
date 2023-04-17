@@ -1,12 +1,13 @@
 package cursojava.executavel;
 
 import javax.swing.JOptionPane;
-import com.sun.jdi.IntegerType;
+
 import java.util.Scanner; 
 import java.util.ArrayList;
 import java.util.List;
 
 import cursojava.classes.Aluno;
+import cursojava.classes.Disciplina;
 
 
 
@@ -21,20 +22,13 @@ public class PrimeiraClasseJava {
 		
 		/*Variável local, pertence a esse bloco */
 		
-		/*imprimir/escrever no console*/
-		System.out.println("Meu primeiro codigo em Java - Silvan Miller");
-		System.out.println("Java Orientado a Objeto");
-        System.out.println("Oi");
-        System.out.print("oi");
-        System.out.print("oi");
-        System.out.println("oi");      
-        
+		
         /*invocando o metodo, pois só o Main e auto executavel 
          
         globalVar(); doubledecimal (); concatenar (); operadoresLogicos (); 
         repeticaoWhile (); repeticaoFor (); obtendoDados (); caculoMedia ();
-        pooConstrutor (); getsetMetodo (); entradaDadosTeclado(); equalsHashcode();*/
-        acresentarDisciplinas();
+        pooConstrutor (); getsetMetodo (); entradaDadosTeclado(); equalsHashcode();
+        acresentarDisciplinas();*/ criandoList();
 	}
 	
 	public static void globalVar ()  {
@@ -379,7 +373,7 @@ public class PrimeiraClasseJava {
 	
 	public static void acresentarDisciplinas() {
 		
-		String nomeEscola = JOptionPane.showInputDialog("Digite o nome da escola ?");
+		/*String nomeEscola = JOptionPane.showInputDialog("Digite o nome da escola ?");
 		String nome = JOptionPane.showInputDialog("Digite o nome do Aluno ?");
 		
 		String materia1 = JOptionPane.showInputDialog("Nome da Materia");
@@ -399,26 +393,82 @@ public class PrimeiraClasseJava {
 		aluno1.setNome(nome);
 		aluno1.setNomeEscola(nomeEscola);
 		
-		aluno1.getDisciplina().setNota1(Double.parseDouble(nt1));
-		aluno1.getDisciplina().setNota2(Double.parseDouble(nt2));
-		aluno1.getDisciplina().setNota3(Double.parseDouble(nt3));
-		aluno1.getDisciplina().setNota4(Double.parseDouble(nt4));
+		aluno1.getDisciplinas().setNota1(Double.parseDouble(nt1));
+		aluno1.getDisciplinas().setNota2(Double.parseDouble(nt2));
+		aluno1.getDisciplinas().setNota3(Double.parseDouble(nt3));
+		aluno1.getDisciplinas().setNota4(Double.parseDouble(nt4));
 		
-		aluno1.getDisciplina().setDisciplina1(materia1);
-		aluno1.getDisciplina().setDisciplina2(materia2);
-		aluno1.getDisciplina().setDisciplina3(materia3);
-		aluno1.getDisciplina().setDisciplina4(materia4);
+		aluno1.getDisciplinas().setDisciplina1(materia1);
+		aluno1.getDisciplinas().setDisciplina2(materia2);
+		aluno1.getDisciplinas().setDisciplina3(materia3);
+		aluno1.getDisciplinas().setDisciplina4(materia4);
 		
 		System.out.println(aluno1.toString());
 		System.out.println("Sua media é = " + aluno1.getMediaNT());
-		System.out.println("Resuldado = "+ (aluno1.getAlunoApRep() ? "Você foi Aprovado" : "Você foi Reprovado"));
-	} 
+		System.out.println("Resuldado = "+ (aluno1.getAlunoApRep() ? "Você foi Aprovado" : "Você foi Reprovado"));*/
+		
+		/*--adicionando de forma manual as disciplinas,  
+		Disciplina disciplinaBD = new Disciplina();
+		disciplinaBD.setDisciplina("Banco de Dados");
+		disciplinaBD.setNota(90);
+		aluno1.getDisciplinas().add(disciplinaBD);
+		
+		Disciplina disciplinaFE = new Disciplina();
+		disciplinaFE.setDisciplina("Front-End");
+		disciplinaFE.setNota(88);
+		aluno1.getDisciplinas().add(disciplinaFE);*/
+	}
+	
+	public static void criandoList() {
+		String nome = JOptionPane.showInputDialog("Digite o nome do Aluno ?");
+		/*String idade = JOptionPane.showInputDialog("Digite sua idade ?");
+		String nascimento = JOptionPane.showInputDialog("Digite a data de nascimento");
+		String rg = JOptionPane.showInputDialog("Digite seu registro geral(rg)");
+		String mae = JOptionPane.showInputDialog("Digite o nome da mãe");
+		String pai = JOptionPane.showInputDialog("Digite nome do pai");
+		String dtMatricula = JOptionPane.showInputDialog("Digite data da matricula");
+		String nomeEscola = JOptionPane.showInputDialog("Digite o nome da escola ?");
+		String serieMatriculada = JOptionPane.showInputDialog("Digite serie matriculada ?");*/
+		
+		Aluno aluno1 = new Aluno();
+		
+		aluno1.setNome(nome);
+		/*aluno1.setIdade(Integer.parseInt(idade));
+		aluno1.setDataNascimento(nascimento);
+		aluno1.setRegistroGeral(rg);
+		aluno1.setNomeMae(mae);
+		aluno1.setNomePai(pai);
+		aluno1.setDataMatricula(dtMatricula);
+		aluno1.setSerieMatricualado(serieMatriculada);		
+		aluno1.setNomeEscola(nomeEscola);*/
+		
+		for (int pos = 1; pos <= 4; pos ++) {
+			
+			String nomeDaDisciplina = JOptionPane.showInputDialog("Digite o nome da disciplina"+pos+"?");
+			String notaDaDisciplina = JOptionPane.showInputDialog("Digite a nota da disciplina"+pos+"?");
+			
+			Disciplina disciplina = new Disciplina();
+			disciplina.setDisciplina(nomeDaDisciplina);
+			disciplina.setNota(Double.valueOf(notaDaDisciplina));
+			
+			aluno1.getDisciplinas().add(disciplina);
+		}
+		/*Removendo disciplinas */
+		int removerDisc = JOptionPane.showConfirmDialog(null,"Deseja remover alguma disciplina?");
+		if (removerDisc == 0) {
+			String disciplinaRemover  = JOptionPane.showInputDialog("Qual a disciplina 1, 2, 3 ou 4 ? ");
+			aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() -1);
+			
+		}
+		
+		System.out.println(aluno1.toString());
+		System.out.println("Sua media é = " + aluno1.getMediaNT());
+		System.out.println("Resuldado = "+ aluno1.getAlunoApRepString());
+		
+		
+	}
 	
 	//
-
-	
-	
-	
 	
 	
 	

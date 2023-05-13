@@ -3,6 +3,8 @@ package cursojava.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import cursojava.constantes.StatusAluno;
+
 /*Esta é a classe /objeto que representa o Aluno*/
 public class Aluno {
 	
@@ -142,10 +144,10 @@ public class Aluno {
 	
 	public boolean getAlunoApRep() {
 		double media = this.getMediaNT();
-		if(media >= 50) {
-			return true;
+		if(media >= 70) {
+			return true;/*aprovado*/
 		}else {
-			return false;
+			return false;/*reprovado*/
 		}
 	}
 	
@@ -154,19 +156,14 @@ public class Aluno {
 		double media = this.getMediaNT();
 		if(media >= 50) {
 			if(media >= 70) {
-				return "Você foi Aprovado";	
+				return StatusAluno.APROVADO;	
 			}else {
-				return "Você esta de Recuperação";
+				return StatusAluno.RECUPERACAO;
 			}
 		}else {
-			return "Você foi reprovado";
+			return StatusAluno.REPROVADO;
 		}
 	}
-	
-	private static int parseInt(String idade) {
-		return 0;
-	}
-	
 	
 	
 	public String toString() {

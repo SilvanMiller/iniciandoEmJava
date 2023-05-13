@@ -2,12 +2,14 @@ package cursojava.executavel;
 
 import javax.swing.JOptionPane;
 
-import java.util.Scanner; 
+import java.util.Scanner;
+import java.io.ObjectInputFilter.Status;
 import java.util.ArrayList;
 import java.util.List;
 
 import cursojava.classes.Aluno;
 import cursojava.classes.Disciplina;
+import cursojava.constantes.StatusAluno;
 
 
 
@@ -25,7 +27,7 @@ public class PrimeiraClasseJava {
         repeticaoWhile (); repeticaoFor (); obtendoDados (); caculoMedia ();
         pooConstrutor (); getsetMetodo (); entradaDadosTeclado(); equalsHashcode();
         acresentarDisciplinas(); removerDisciplinas(); percorrendoLista();  removendoItensLista();
-		percorrendoListaPosicoes();*/ substituindoAlunoNaLista();
+		percorrendoListaPosicoes(); substituindoAlunoNaLista();*/ criandoListaAluno_Ap_Rep_Recup();
         
         
 	}
@@ -828,7 +830,96 @@ public class PrimeiraClasseJava {
         }
         
 	} 
-        //
+	
+	public static void criandoListaAluno_Ap_Rep_Recup() {
+		
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		
+		List<Aluno> alunosAprovados = new ArrayList<Aluno>();
+		List<Aluno> alunosRecuperacao = new ArrayList<Aluno>();
+		List<Aluno> alunosReprovados = new ArrayList<Aluno>();
+		
+        
+        for (int qnt = 1; qnt <=5; qnt++) {
+        	String nome = JOptionPane.showInputDialog("Digite o nome do Aluno "+qnt+"?");
+    		/*String idade = JOptionPane.showInputDialog("Digite sua idade ?");
+    		String nascimento = JOptionPane.showInputDialog("Digite a data de nascimento");
+    		String rg = JOptionPane.showInputDialog("Digite seu registro geral(rg)");
+    		String mae = JOptionPane.showInputDialog("Digite o nome da mãe");
+    		String pai = JOptionPane.showInputDialog("Digite nome do pai");
+    		String dtMatricula = JOptionPane.showInputDialog("Digite data da matricula");
+    		String nomeEscola = JOptionPane.showInputDialog("Digite o nome da escola ?");
+    		String serieMatriculada = JOptionPane.showInputDialog("Digite serie matriculada ?");*/
+    		
+    		Aluno aluno1 = new Aluno();
+    		
+    		aluno1.setNome(nome);
+    		/*aluno1.setIdade(Integer.parseInt(idade));
+    		aluno1.setDataNascimento(nascimento);
+    		aluno1.setRegistroGeral(rg);
+    		aluno1.setNomeMae(mae);
+    		aluno1.setNomePai(pai);
+    		aluno1.setDataMatricula(dtMatricula);
+    		aluno1.setSerieMatricualado(serieMatriculada);		
+    		aluno1.setNomeEscola(nomeEscola);*/
+    		
+    		for (int pos = 0; pos <= 1; pos ++) {
+    			
+    			String nomeDaDisciplina = JOptionPane.showInputDialog("Digite o nome da disciplina"+pos+"?");
+    			String notaDaDisciplina = JOptionPane.showInputDialog("Digite a nota da disciplina"+pos+"?");
+    			
+    			Disciplina disciplina = new Disciplina();
+    			disciplina.setDisciplina(nomeDaDisciplina);
+    			disciplina.setNota(Double.valueOf(notaDaDisciplina));
+    			
+    			aluno1.getDisciplinas().add(disciplina);
+    		}
+    		/*Removendo disciplinas em repetição*/
+    		int removerDisc = JOptionPane.showConfirmDialog(null,"Deseja remover alguma disciplina?");
+    		
+    		if (removerDisc == 0) {
+    			
+    			int continuarRemover = 0;
+    			int posicao = 1;
+    			while(continuarRemover == 0) {			
+    				String disciplinaRemover  = JOptionPane.showInputDialog("Qual a disciplina 1, 2, 3 ou 4 ? ");
+    				aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() - posicao);
+    				posicao ++;
+    				continuarRemover = JOptionPane.showConfirmDialog(null, "Continuar a remover?");
+    			}
+    			
+    		}
+    		alunos.add(aluno1);	
+        }
+        /*Separados em Listas*/
+        for (Aluno aluno : alunos) {
+			if(aluno.getAlunoApRepString().equalsIgnoreCase(StatusAluno.APROVADO)) {
+				alunosAprovados.add(aluno);
+			}else if (aluno.getAlunoApRepString().equalsIgnoreCase(StatusAluno.RECUPERACAO)) {
+				alunosRecuperacao.add(aluno);
+			}else if (aluno.getAlunoApRepString().equalsIgnoreCase(StatusAluno.REPROVADO)) {
+				alunosReprovados.add(aluno);
+			}
+		}
+        System.out.println("----------- Lista de Aprovados ----------------------");
+        for (Aluno aluno : alunosAprovados) {
+			System.out.println("Aluno(a) " + " " + aluno.getNome()+ " " +aluno.getAlunoApRepString() + " com média " + aluno.getMediaNT());
+		}
+        
+        System.out.println("----------- Lista de Recuperação ----------------------");
+        for (Aluno aluno : alunosRecuperacao) {
+			System.out.println("Aluno(a) " + " " + aluno.getNome()+ " " +aluno.getAlunoApRepString() + " com média " + aluno.getMediaNT());
+		}
+        
+        System.out.println("----------- Lista de Reprovados ----------------------");
+        for (Aluno aluno : alunosReprovados) {
+			System.out.println("Aluno(a) " + " " + aluno.getNome()+ " " +aluno.getAlunoApRepString() + " com média " + aluno.getMediaNT());
+		}
+        
+        
+	}
+	
+	//
 	
 	
 	

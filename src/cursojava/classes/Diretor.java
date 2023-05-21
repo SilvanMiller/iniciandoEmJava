@@ -2,6 +2,7 @@ package cursojava.classes;
 
 /*Esta é a classe/objeto filha que representa o Diretor - herança*/
 public class Diretor extends Pessoa {
+	
 	private String registroEducacao;
 	private int tempoDirecao;
 	private String titulacao;
@@ -30,6 +31,10 @@ public class Diretor extends Pessoa {
 				+ titulacao + ", nome=" + nome + ", idade=" + idade + ", dataNascimento=" + dataNascimento
 				+ ", registroGeral=" + registroGeral + ", numeroCPF=" + numeroCPF + ", nomeMae=" + nomeMae
 				+ ", nomePai=" + nomePai + "]";
+	}
+	@Override
+	public double salario() {
+		return 3800.70;
 	}
 	
 	

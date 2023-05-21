@@ -2,6 +2,7 @@ package cursojava.classes;
 
 /*Esta é a classe/objeto filha que representa o Secretario - herança*/
 public class Secretario extends Pessoa{
+	
 	private String registro;
 	private int nivelCargo;
 	private String experiencia;
@@ -36,6 +37,10 @@ public class Secretario extends Pessoa{
 				+ "numeroCPF = " + numeroCPF + ", "
 				+ "nomeMae = " + nomeMae + ", "
 				+ "nomePai = " + nomePai + "]";
+	}
+	@Override
+	public double salario() {
+		return 1800.80 * +0.9;
 	}
 	
 	

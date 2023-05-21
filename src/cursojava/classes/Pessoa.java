@@ -1,7 +1,7 @@
 package cursojava.classes;
 
 /*Classe pai, master, raiz ou superClasse - atrbto comuns a tds os objts filhos */
-public class Pessoa {
+public abstract class Pessoa {
 	protected String nome;
 	protected int idade;
 	protected String dataNascimento;
@@ -9,6 +9,10 @@ public class Pessoa {
 	protected String numeroCPF;
 	protected String nomeMae;
 	protected String nomePai;
+	
+	/*Mtdo abstrato e que fique na clss pai, é obrigatorio para as clss filhas*/
+	public abstract double salario();
+	
 	protected String getNome() {
 		return nome;
 	}

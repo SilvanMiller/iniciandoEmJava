@@ -13,7 +13,7 @@ public abstract class Pessoa {
 	/*Mtdo abstrato e que fique na clss pai, é obrigatorio para as clss filhas*/
 	public abstract double salario();
 	
-	protected String getNome() {
+	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {

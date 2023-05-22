@@ -10,9 +10,21 @@ public class Secretario extends Pessoa implements PermitirAcesso{
 	private int nivelCargo;
 	private String experiencia;
 	
-	private String login;
+	/*private String login;
 	private String senha;
 	
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}*/
 	
 	
 	public String getRegistro() {
@@ -35,20 +47,6 @@ public class Secretario extends Pessoa implements PermitirAcesso{
 	}
 	
 	
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
-	
 	
 	@Override
 	public String toString() {
@@ -68,9 +66,15 @@ public class Secretario extends Pessoa implements PermitirAcesso{
 		return 1800.80 * 0.9;
 	}
 	
-	/*Esse é o metodo do contrato de autenticação*/
+	/*Esse é o metodo do contrato de autenticação
 	public boolean autenticar() {
-		return login.equals("admin") && senha.equals("admin");/*Rtorna sim caso login e senha correto ou false se incorreto*/
+		return login.equals("admin") && senha.equals("admin");
+		/*Rtorna sim caso login e senha correto ou false se incorreto
+		}*/
+	
+	
+	public boolean autenticar(String login, String senha) {
+		return login.equals("admin") && senha.equals("admin");
 	}
 	
 	

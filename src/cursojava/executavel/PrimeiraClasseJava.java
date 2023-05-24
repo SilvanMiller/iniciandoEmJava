@@ -11,6 +11,7 @@ import java.io.ObjectInputFilter.Status;
 import cursojava.classes.Aluno;
 import cursojava.classes.Disciplina;
 import cursojava.classes.Secretario;
+import cursojava.classesauxiliares.FuncaoAutenticacao;
 import cursojava.constantes.StatusAluno;
 import cursojava.interfaces.PermitirAcesso;
 
@@ -32,9 +33,10 @@ public class PrimeiraClasseJava {
         pooConstrutor (); getsetMetodo (); entradaDadosTeclado(); equalsHashcode();
         acresentarDisciplinas(); removerDisciplinas(); percorrendoLista();  removendoItensLista();
 		percorrendoListaPosicoes(); substituindoAlunoNaLista(); criandoListaAluno_Ap_Rep_Recup();
-		separandoListasHashMap (); simplesValidacao_permissao_acesso_Intrfce(); */ 
-		simplesValidacao_permissao_acesso2_Intrfce_Paramtrs(); simplesValidacao_permissao_acesso3_Intrfce_Cnstrutr();
-        
+		separandoListasHashMap (); simplesValidacao_permissao_acesso_Intrfce();
+		simplesValidacao_permissao_acesso2_Intrfce_Paramtrs();*/ 
+		simplesValidacao_permissao_acesso3_Intrfce_Cnstrutr();
+		simplesValidacao_permissao_acesso4_Intrfce_Polimorfismo_extremo();
 	}
 	
 	public static void globalVar ()  {
@@ -1227,6 +1229,110 @@ public class PrimeiraClasseJava {
 		PermitirAcesso permitirAcesso = new Secretario(login, senha);
 		
 		if(permitirAcesso.autenticar()) {
+		
+			List<Aluno> alunos = new ArrayList<Aluno>();
+			
+			/*É uma lista q dntro dela tmos uma chve q idntifca uma sequencia de vlrs também*/
+			HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
+			     
+	        for (int qnt = 1; qnt <=3; qnt++) {
+	        	String nome = JOptionPane.showInputDialog("Digite o nome do Aluno "+qnt+"?");
+	    		/*String idade = JOptionPane.showInputDialog("Digite sua idade ?");
+	    		String nascimento = JOptionPane.showInputDialog("Digite a data de nascimento");
+	    		String rg = JOptionPane.showInputDialog("Digite seu registro geral(rg)");
+	    		String mae = JOptionPane.showInputDialog("Digite o nome da mãe");
+	    		String pai = JOptionPane.showInputDialog("Digite nome do pai");
+	    		String dtMatricula = JOptionPane.showInputDialog("Digite data da matricula");
+	    		String nomeEscola = JOptionPane.showInputDialog("Digite o nome da escola ?");
+	    		String serieMatriculada = JOptionPane.showInputDialog("Digite serie matriculada ?");*/
+	    		
+	    		Aluno aluno1 = new Aluno();
+	    		
+	    		aluno1.setNome(nome);
+	    		/*aluno1.setIdade(Integer.parseInt(idade));
+	    		aluno1.setDataNascimento(nascimento);
+	    		aluno1.setRegistroGeral(rg);
+	    		aluno1.setNomeMae(mae);
+	    		aluno1.setNomePai(pai);
+	    		aluno1.setDataMatricula(dtMatricula);
+	    		aluno1.setSerieMatricualado(serieMatriculada);		
+	    		aluno1.setNomeEscola(nomeEscola);*/
+	    		
+	    		for (int pos = 0; pos <= 1; pos ++) {
+	    			
+	    			String nomeDaDisciplina = JOptionPane.showInputDialog("Digite o nome da disciplina"+pos+"?");
+	    			String notaDaDisciplina = JOptionPane.showInputDialog("Digite a nota da disciplina"+pos+"?");
+	    			
+	    			Disciplina disciplina = new Disciplina();
+	    			disciplina.setDisciplina(nomeDaDisciplina);
+	    			disciplina.setNota(Double.valueOf(notaDaDisciplina));
+	    			
+	    			aluno1.getDisciplinas().add(disciplina);
+	    		}
+	    		/*Removendo disciplinas em repetição*/
+	    		int removerDisc = JOptionPane.showConfirmDialog(null,"Deseja remover alguma disciplina?");
+	    		
+	    		if (removerDisc == 0) {
+	    			
+	    			int continuarRemover = 0;
+	    			int posicao = 1;
+	    			while(continuarRemover == 0) {			
+	    				String disciplinaRemover  = JOptionPane.showInputDialog("Qual a disciplina 1, 2, 3 ou 4 ? ");
+	    				aluno1.getDisciplinas().remove(Integer.valueOf(disciplinaRemover).intValue() - posicao);
+	    				posicao ++;
+	    				continuarRemover = JOptionPane.showConfirmDialog(null, "Continuar a remover?");
+	    			}
+	    			
+	    		}
+	    		alunos.add(aluno1);	
+	        }
+	        
+	        maps.put(StatusAluno.APROVADO, new ArrayList<Aluno>());
+	        maps.put(StatusAluno.RECUPERACAO, new ArrayList<Aluno>());
+	        maps.put(StatusAluno.REPROVADO, new ArrayList<Aluno>());
+	        
+	        /*Separados em Listas*/
+	        for (Aluno aluno : alunos) {
+				if(aluno.getAlunoApRepString().equalsIgnoreCase(StatusAluno.APROVADO)) {
+					maps.get(StatusAluno.APROVADO).add(aluno);
+				}else if (aluno.getAlunoApRepString().equalsIgnoreCase(StatusAluno.RECUPERACAO)) {
+					maps.get(StatusAluno.RECUPERACAO).add(aluno);
+				}else if (aluno.getAlunoApRepString().equalsIgnoreCase(StatusAluno.REPROVADO)) {
+					maps.get(StatusAluno.REPROVADO).add(aluno);
+				}
+			}
+	        System.out.println("----------- Lista de Aprovados ----------------------");
+	        for (Aluno aluno : maps.get(StatusAluno.APROVADO)) {
+				System.out.println("Aluno(a) " + " " + aluno.getNome()+ " " +aluno.getAlunoApRepString() + " com média " + aluno.getMediaNT());
+			}
+	        
+	        System.out.println("----------- Lista de Recuperação ----------------------");
+	        for (Aluno aluno : maps.get(StatusAluno.RECUPERACAO)) {
+				System.out.println("Aluno(a) " + " " + aluno.getNome()+ " " +aluno.getAlunoApRepString() + " com média " + aluno.getMediaNT());
+			}
+	        
+	        System.out.println("----------- Lista de Reprovados ----------------------");
+	        for (Aluno aluno : maps.get(StatusAluno.REPROVADO)) {
+				System.out.println("Aluno(a) " + " " + aluno.getNome()+ " " +aluno.getAlunoApRepString() + " com média " + aluno.getMediaNT());
+			}
+        
+		}else {
+			JOptionPane.showMessageDialog(null, "Acesso não permitido");
+		}
+	}
+	
+	public static void simplesValidacao_permissao_acesso4_Intrfce_Polimorfismo_extremo() {
+		
+		String login = JOptionPane.showInputDialog("Digite o login");
+		String senha = JOptionPane.showInputDialog("Digite a senha");
+		
+		/*esse parameto foi passado dentro do if abaixo*/
+		/*PermitirAcesso secretario = new Secretario();/*Método diretamente com objto*/
+		
+				
+		PermitirAcesso permitirAcesso = new Secretario(login, senha);
+		
+		if(new FuncaoAutenticacao(permitirAcesso).autenticar()){/*vou travar o  contrto para autrzar somente qm realmente tem o contrato 100% legitimo*/
 		
 			List<Aluno> alunos = new ArrayList<Aluno>();
 			
